@@ -8,19 +8,17 @@ public class ManAndMonsterPath {
 		ObjectPosition gold = new ObjectPosition(3, 2, "Gold");
 		d = d.addObject(man);
 		d = d.addObject(gold);
-		ObjectPosition monster = new ObjectPosition(5, 1, "Monster");
+		ObjectPosition monster = new ObjectPosition(5, 3, "Monster");
 		d = d.addObject(monster);
 		d.print();
 		
 		
 		int manAndGoldDis = d.shortDistance(man,gold);
-//		System.out.println(manAndGoldDis + "--- Man & Gold");
 		int monsterAndGoldDis = d.shortDistance(monster,gold);
-//		System.out.println(monsterAndGoldDis + "--- Monster & Gold");
 		
 		if (manAndGoldDis<=monsterAndGoldDis) {
 			System.out.println(manAndGoldDis + " Units Distance");
-			d.printPath(man,gold);
+			d.printPath(man,gold,monster);
 		} else {
 			System.out.println("No Possible Solution");
 		}

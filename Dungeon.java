@@ -108,53 +108,97 @@ public class Dungeon {
 		return count;
 	}
 
-	public void printPath(ObjectPosition man, ObjectPosition gold) {
+	public void printPath(ObjectPosition man, ObjectPosition gold,ObjectPosition monster) {
 		System.out.println("Shortest Path from Man to Gold is...");
-		if (man.row < gold.row) {
-			for (int i = man.row+1; i < gold.row; i++) {
-				System.out.print("(" + i + "," + man.column + ")-->");
-			}
-			if (man.column<gold.column) {
-				for (int i = man.column; i < gold.column; i++) {
-					System.out.print("(" + gold.row + "," + i + ")-->");
+		if (man.column != monster.column) {
+			if (man.row < gold.row) {
+				for (int i = man.row+1; i < gold.row; i++) {
+					System.out.print("(" + i + "," + man.column + ")-->");
 				}
-			}
-			else if (man.column>gold.column) {
-				for (int i = man.column; i > gold.column; i--) {
-					System.out.print("(" + gold.row + "," + i + ")-->");
+				if (man.column<gold.column) {
+					for (int i = man.column; i < gold.column; i++) {
+						System.out.print("(" + gold.row + "," + i + ")-->");
+					}
 				}
+				else if (man.column>gold.column) {
+					for (int i = man.column; i > gold.column; i--) {
+						System.out.print("(" + gold.row + "," + i + ")-->");
+					}
+				}
+				System.out.println("(" + gold.row + "," + gold.column + ")");
 			}
-			System.out.println("(" + gold.row + "," + gold.column + ")");
+			else if (man.row > gold.row) {
+				for (int i = man.row-1; i > gold.row; i--) {
+					System.out.print("(" + i + "," + man.column + ")-->");
+				}
+				if (man.column<gold.column) {
+					for (int i = man.column; i < gold.column; i++) {
+						System.out.print("(" + gold.row + "," + i + ")-->");
+					}
+				}
+				else if (man.column>gold.column) {
+					for (int i = man.column; i > gold.column; i--) {
+						System.out.print("(" + gold.row + "," + i + ")-->");
+					}
+				}
+				System.out.println("(" + gold.row + "," + gold.column + ")-->");
+			}
+			else if (man.row == gold.row) {
+				if (man.column<gold.column) {
+					for (int i = man.column; i < gold.column; i++) {
+						System.out.print("(" + gold.row + "," + i + ")-->");
+					}
+				}
+				else if (man.column>gold.column) {
+					for (int i = man.column; i > gold.column; i--) {
+						System.out.print("(" + gold.row + "," + i + ")-->");
+					}
+				}
+				System.out.println("(" + gold.row + "," + gold.column + ")");
+			}
 		}
-		else if (man.row > gold.row) {
-			for (int i = man.row-1; i > gold.row; i--) {
-				System.out.print("(" + i + "," + man.column + ")-->");
-			}
-			if (man.column<gold.column) {
-				for (int i = man.column; i < gold.column; i++) {
-					System.out.print("(" + gold.row + "," + i + ")-->");
+		else {
+			if (man.column < gold.column) {
+				for (int i = man.column+1; i < gold.column; i++) {
+					System.out.print("(" + man.row  + "," + i+ ")-->");
 				}
-			}
-			else if (man.column>gold.column) {
-				for (int i = man.column; i > gold.column; i--) {
-					System.out.print("(" + gold.row + "," + i + ")-->");
+				if (man.row<gold.column) {
+					for (int i = man.row; i < gold.row; i++) {
+						System.out.print("(" + i + "," + gold.column + ")-->");
+					}
+				}else if (man.row>gold.column) {
+					for (int i = man.row; i > gold.row; i--) {
+						System.out.print("(" + i + "," + gold.column + ")-->");
+					}
 				}
+				System.out.println("(" + gold.row + "," + gold.column + ")");
 			}
-			System.out.println("(" + gold.row + "," + gold.column + ")-->");
+			else if (man.column > gold.column) {
+				for (int i = man.column-1; i > gold.column; i--) {
+					System.out.print("(" + i + "," + man.row + ")-->");
+				}
+				if (man.row<gold.column) {
+					for (int i = man.row; i < gold.row; i++) {
+						System.out.print("(" + i + "," + gold.column + ")-->");
+					}
+				}else if (man.row>gold.column) {
+					for (int i = man.row; i > gold.row; i--) {
+						System.out.print("(" + i + "," + gold.column + ")-->");
+					}
+				}
+				System.out.println("(" + gold.row + "," + gold.column + ")");
+			}
+			else if (man.row == gold.row) {
+				System.out.println("Gold & Man are in Same Place");
+			}
 		}
-		else if (man.row == gold.row) {
-			if (man.column<gold.column) {
-				for (int i = man.column; i < gold.column; i++) {
-					System.out.print("(" + gold.row + "," + i + ")-->");
-				}
-			}
-			else if (man.column>gold.column) {
-				for (int i = man.column; i > gold.column; i--) {
-					System.out.print("(" + gold.row + "," + i + ")-->");
-				}
-			}
-			System.out.println("(" + gold.row + "," + gold.column + ")");
-		}
-
 	}
+
+
+	public int disManGoldPits(ObjectPosition man, ObjectPosition gold2, ObjectPosition pit1, ObjectPosition pit2,
+			ObjectPosition pit3) {
+		System.out.println("Deadly pits added to Dungeon");
+		return 0;
+	}
+
 }
